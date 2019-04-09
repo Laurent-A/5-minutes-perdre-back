@@ -1,0 +1,6 @@
+{{ form_start(quizz_form) }}
+    {{ form_row(quizz_form.title) }}
+    {{ form_row(quizz_form.tags, {'attr': {'class': 'custom-control-inline'}}) }}
+
+    <button class="btn btn-success">{{ button_label|default('Sauvegarder') }}</button>
+{{ form_end(quizz_form) }}

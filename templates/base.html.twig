@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+        
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body>
+        <header>
+            <img class="logo" src="{{asset('images/logo.png')}}" alt="logo-5MAP">
+            <nav class="navbar justify-content-center navbar-fixed-top p-3 mb-3">
+                {% if is_granted('ROLE_ADMIN')%}
+                <a class="nav-link text-light" href="{{ path('admin_user_index') }}">Membres</a>
+                <a class="nav-link text-light" href="{{ path('admin_game_index') }}">Jeux</a>
+                <a class="nav-link text-light" href="{{ path('admin_wiki_index') }}">Fiches wiki</a>
+                <a class="nav-link text-light" href="{{ path('admin_quizz_index') }}">Quizz</a>
+                <a class="nav-link text-light" href="{{ path('admin_tag_index') }}">Thèmes</a>
+                {% endif %}
+                {% if app.user %}
+                <a class="nav-link text-light logout" href="{{ path('logout') }}">Déconnexion</a>
+                {% endif %}
+            </nav>
+        </header>
+        <main>
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    <div class="col-10 text-center">
+                        {% block body %}{% endblock %}
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <footer class="footer p-3 mt-5 fixed-bottom">
+            <p class="text-center text-light">Made with &#9829; by 5MAP Team</p>
+        </footer>
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

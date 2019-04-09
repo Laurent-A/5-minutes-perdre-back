@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Editer une réponse{% endblock %}
+
+{% block body %}
+<h2 class="my-4">Editer une réponse</h2>
+
+{{ include('admin/question/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+
+
+
+<a href="{{ path('admin_question_edit', {'quizz_id': question.quizz.id, 'question_id': question.id}) }}">Retour à la question</a>
+{% endblock %}

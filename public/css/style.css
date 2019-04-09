@@ -1,0 +1,49 @@
+html{
+    position:relative;
+    min-height: 100%;
+}
+main{
+    margin-bottom: 6.25rem;
+}
+.navbar
+{
+    background-color: #4C8DF0;
+    height:5em;
+
+}
+
+.footer
+{
+    position: absolute;
+    bottom:0;
+    background-color: black;
+}
+
+.btn
+{
+    background-color: #F5A834;
+}
+
+.thead
+{
+    background-color: #F5A834
+}
+.logo{
+    position: absolute;
+    height: 5em;
+    font-size: 1.5em;
+    margin-left: 4em 0 4em 0;
+    z-index: 10;
+}
+
+.form-check{
+    padding-left: 2.25rem;
+}
+
+.button_edit_delete {
+    margin: 0.50rem;
+}
+
+#wiki_body.form-control{
+    height: 8em;
+}

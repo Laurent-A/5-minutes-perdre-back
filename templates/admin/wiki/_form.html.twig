@@ -1,0 +1,7 @@
+{{ form_start(form) }}
+    {{ form_row(form.name) }}
+    {{ form_row(form.body) }}
+    {{ form_row(form.tags, {'attr': {'class': 'custom-control-inline'}}) }}
+
+    <button class="btn btn-success">{{ button_label|default('Sauvegarder') }}</button>
+{{ form_end(form) }}

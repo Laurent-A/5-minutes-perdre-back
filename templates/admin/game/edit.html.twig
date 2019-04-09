@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Editer un jeu{% endblock %}
+
+{% block body %}
+<h2  class="my-4">Editer un jeu</h2>
+
+    <div class="button_edit_delete"> {{ include('admin/game/_form.html.twig', {'button_label': 'Mettre à jour'}) }} </div>
+    <div class="button_edit_delete"> {{ include('admin/game/_delete_form.html.twig') }} </div>
+
+<a href="{{ path('admin_game_index') }}">Retour à la liste</a>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Administration 5MAP{% endblock %}
+
+{% block body %}
+    <h2 class="my-4">Administration des Anecdotes</h2>
+
+    <table class="table table-striped table-bordered table-md">
+        <thead class="thead">
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Crée le</th>
+                <th>Mis à jour le</th>
+                <th>Action</th>
+                <th>En ligne</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for wiki in wikis %}
+            <tr>
+                <td>{{ wiki.id }}</td>
+                <td>{{ wiki.name }}</td>
+                <td>{{ wiki.createdAt ? wiki.createdAt|date('d-m-Y') : '' }}</td>
+                <td>{{ wiki.updatedAt ? wiki.updatedAt|date('d-m-Y') : '' }}</td>
+                <td>
+                    <a href="{{ path('admin_wiki_edit', {'id': wiki.id}) }}"><i class="fas fa-pencil-alt"></i> Editer</a>
+                </td>
+                <td>
+                    {% if wiki.online == true %}
+                    <a href="{{ path('admin_wiki_online', {"id": wiki.id}) }}"><i class="far fa-check-square"></i></a>
+                    {% else %}
+                    <a href="{{ path('admin_wiki_online', {"id": wiki.id}) }}"><i class="far fa-square"></i></a>
+                    {% endif %}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div class="navigation">
+        {{ knp_pagination_render(wikis) }}
+    </div>
+    <a class="btn btn-success" href="{{ path('admin_wiki_new') }}">Nouvelle anecdote</a>
+{% endblock %}
